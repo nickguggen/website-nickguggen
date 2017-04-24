@@ -1,10 +1,29 @@
-<?php $name = $_POST['name'];
-$email = $_POST['email'];
+<?php
+// Check for empty fields
+if(empty($_POST['name'])  		||
+   empty($_POST['email']) 		||
+   empty($_POST['message'])	||
+   !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL))
+   {
+	echo "No arguments Provided!";
+	return false;
+   }
+
+$name = $_POST['name'];
+$email_address = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+if ($email === FALSE) {
+    echo 'Invalid email';
+    exit(1);
+}
 $message = $_POST['message'];
-$formcontent="From: $name \n Message: $message";
-$recipient = "hello@nickgmail.com";
-$subject = "Hey Nick!";
-$mailheader = "From: $email \r\n";
-mail($recipient, $subject, $formcontent, $mailheader) or die("Whoops! Something went wrong. Please try again!");
-echo "Thanks! I'll be in touch soon.";
+
+
+// Create the email and send the message
+$to = 'hello@nickgmail.com'; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
+$email_subject = "Website Contact Form:  $name";
+$email_body = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\nEmail: $email_address\n\nPhone: $phone\n\nMessage:\n$message";
+$headers = "From: noreply@zani.co\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
+$headers .= "Reply-To: $email_address";
+mail($to,$email_subject,$email_body,$headers);
+return true;
 ?>
