@@ -1005,10 +1005,9 @@
 		input[type="button"].special,
 		button.special,
 		.button.special {
-			background-color: #ffffff;
-			color: #1b1f22 !important;
-			font-weight: 600;
-
+				background-color: #ffffff;
+				color: #1b1f22 !important;
+				font-weight: 600;
 		}
 
 		input[type="submit"].disabled, input[type="submit"]:disabled,
