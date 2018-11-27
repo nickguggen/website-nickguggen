@@ -8,9 +8,8 @@ Current Projects:
 - MNonFIRE
 - Fix Broadway
 - Compass Foundry
+
+Idea Stage:
 - Nomad Scout
 - Meal Mate
 - Idearepo
-
-
-Past Projects:
