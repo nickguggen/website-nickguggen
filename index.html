@@ -45,6 +45,13 @@
       })()
     </script>
     <!-- End Matomo Code -->
+
+    <!--Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/e34bd7904a.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--End Font Awesome-->
   </head>
 
   <body>
@@ -158,26 +165,6 @@
             equity to hire a technical co-founder who may or may not share their
             passion for the idea. I figured there had to be a better way.
             Compass Foundry offers early stage founders an alternative.
-            <!-- <br />
-            With <strong>Compass Consult</strong>, founders meet with a product
-            expert to determine the most efficient way to test market
-            assumptions, find early customers, and talk to potential users to
-            make sure they build the right thing.
-            <br />
-            <br />
-            With <strong>Compass Create</strong>, founders can work with a team
-            of software engineers, product designers, finance experts, and more
-            to build their ideas into reality. Or for those who have a team
-            selected already, we're happy to continue providing strategic
-            consultation.
-            <br />
-            <br />
-            With <strong>Compass Capital</strong>, technical and product experts
-            help select entrepreneurs build a digital product for zero up front
-            costs in exchange for a revenue sharing agreement. This aligns
-            incentives, as we don't take a cent until the founders are making
-            money themselves.
-          </p> -->
 
             <br />
           </p>
@@ -419,33 +406,62 @@
         <!-- Contact -->
         <article id="contact">
           <h2 class="major">Contact</h2>
-          <form action="https://formspree.io/xzbzkkvv" method="POST">
+          <form name="contact-form">
             <div class="field half first">
               <label for="name">Name</label>
               <input type="text" name="name" id="name" required />
             </div>
             <div class="field half">
               <label for="email">Email</label>
-              <input type="text" name="email" id="email" required />
+              <input type="email" name="email" id="email" required />
             </div>
             <div class="field">
               <label for="message">Message</label>
-              <textarea name="message" id="message" rows="4"></textarea>
+              <textarea
+                type="text"
+                name="message"
+                id="message"
+                rows="4"
+                required
+              ></textarea>
             </div>
             <ul class="actions">
               <li>
-                <input type="submit" value="Send Message" class="special" />
+                <input
+                  type="submit"
+                  value="Send Message"
+                  onClick="submitForm()"
+                />
               </li>
-              <li><input type="reset" value="Reset" /></li>
             </ul>
+
+            <script>
+              function submitForm() {
+                const scriptURL =
+                  'https://script.google.com/macros/s/AKfycbwC5F8sn9PPlLdsLoHvm5Yh9Djf1rDqL7R_RHssgVCjgETBOmmtpz1-sccgVo6w6KHP8w/exec'
+                const form = document.forms['contact-form']
+                form.addEventListener('submit', (e) => {
+                  e.preventDefault()
+                  fetch(scriptURL, {
+                    method: 'POST',
+                    body: new FormData(form),
+                  }).then(document.forms['contact-form'].reset())
+                })
+                form.addEventListener('submit', onSubmit)
+                function onSubmit() {
+                  alert('Thanks! I will be in touch soon.')
+                }
+              }
+            </script>
           </form>
+
           <ul class="icons">
             <li>
               <a
-                href="https://www.twitter.com/nickguggen"
+                href="https://keybase.io/nickguggen"
                 target="_blank"
-                class="icon fa-twitter"
-                ><span class="label">Twitter</span></a
+                class="icon fa-keybase"
+                ><span class="label">Keybase</span></a
               >
             </li>
             <li>
@@ -477,14 +493,7 @@
       </div>
 
       <!-- Footer -->
-      <footer id="footer">
-        <!-- <ul class="icons">
-							<li><a href="https://www.twitter.com/nickguggen" target= "_blank" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="https://medium.com/@nickguggen" target= "_blank" class="icon fa-medium"><span class="label">Medium</span></a></li>
-							<li><a href="https://www.linkedin.com/in/nickguggenbuehl" target= "_blank" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
-							<li><a href="https://github.com/nickguggen" target= "_blank" class="icon fa-github"><span class="label">GitHub</span></a></li>
-						</ul> -->
-      </footer>
+      <footer id="footer"></footer>
     </div>
 
     <!-- BG -->
