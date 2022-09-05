@@ -1718,3 +1718,10 @@ body.is-article-visible #footer {
 body.is-loading #footer {
   opacity: 0;
 }
+
+.bg-image {
+  background-image: url('/images/blugolds.png');
+  height: 100%;
+  background-position: center;
+  background-repeat: repeat;
+}
